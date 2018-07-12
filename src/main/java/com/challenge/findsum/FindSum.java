@@ -1,4 +1,4 @@
-package com.challenge.findsum.findsum;
+package com.challenge.findsum;
 
 public interface FindSum {
 

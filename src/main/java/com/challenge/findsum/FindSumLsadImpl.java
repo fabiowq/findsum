@@ -1,10 +1,7 @@
-package com.challenge.findsum.findsum;
+package com.challenge.findsum;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 @Primary
 @Component

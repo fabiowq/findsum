@@ -1,4 +1,4 @@
-package com.challenge.findsum.findsum;
+package com.challenge.findsum;
 
 import lombok.Builder;
 import lombok.Getter;
