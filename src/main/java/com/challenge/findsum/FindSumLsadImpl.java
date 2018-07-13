@@ -1,15 +1,15 @@
 package com.challenge.findsum;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Primary
+import java.util.Arrays;
+
 @Component
 public class FindSumLsadImpl implements FindSum {
 
   public boolean find(int[] A, int x) {
-
     if (A.length <= 1) return false;
+    Arrays.sort(A);
     for (int i = 0; i < A.length; i++ ) {
       int soma = A[i];
       for (int j = i + 1; j < A.length; j++)
@@ -20,7 +20,6 @@ public class FindSumLsadImpl implements FindSum {
   }
 
   boolean verificaArr(int somatorio, int pos, int[] A, int x) {
-
     for (int j = pos; j < A.length; j++) {
       somatorio += A[j];
       if (somatorio == x) return true;

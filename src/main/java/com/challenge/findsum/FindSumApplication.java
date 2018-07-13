@@ -33,6 +33,7 @@ public class FindSumApplication {
             @Value("classpath:input.txt") Resource inputResource,
             FindSum findSum) {
         return args -> {
+            log.info("Using implementation {}", findSum.getClass().getName());
             try (Stream<String> lines = Files.lines(Paths.get(inputResource.getURI()))) {
                 List<PrintLine> printLines = new ArrayList<>();
                 lines.forEach(line -> {
@@ -66,11 +67,23 @@ public class FindSumApplication {
                         } else {
 
                         }
-                        printLines.add(PrintLine.builder().line(line).actualResult(Optional.ofNullable(resultBool)).build());
+                        printLines.add(PrintLine.builder()
+                                .line(line)
+                                .expectedResult(Optional.ofNullable(expectedResult))
+                                .actualResult(Optional.ofNullable(resultBool)).build()
+                        );
                     }
                 });
                 log.info("Int Array\tSum Number\tExpected Result\t\tActual Result");
-                printLines.stream().forEach(p -> log.info("{}\t\t\t{}", p.getLine(), p.getActualResult().map(b -> b.toString()).orElse("ignored")));
+                printLines.stream().forEach(p ->
+                        log.info("{}\t\t\t{}", p.getLine(), p.getActualResult()
+                                .map(b -> ((p.getExpectedResult().isPresent()) && (!p.getExpectedResult().get().equals(b)))?
+                                        b.toString() + " *": b.toString()
+
+                                )
+                                .orElse("ignored")
+                        )
+                );
             }
         };
     }
@@ -79,8 +92,9 @@ public class FindSumApplication {
     @Builder
     @Getter
     private static class PrintLine {
-	    private final String line;
-        private final Optional<Boolean> actualResult;
+	    private String line;
+        private Optional<Boolean> expectedResult;
+        private Optional<Boolean> actualResult;
     }
 
 }
