@@ -1,13 +1,5 @@
 package com.challenge.findsum;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.Random;
-
-@Primary
-@Component
 public class FindSumLsadImpl implements FindSum {
 
   public boolean find(int[] A, int x) {

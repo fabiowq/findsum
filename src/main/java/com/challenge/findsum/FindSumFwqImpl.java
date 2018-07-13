@@ -1,12 +1,7 @@
 package com.challenge.findsum;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
 import java.util.Arrays;
 
-@Primary
-@Component
 public class FindSumFwqImpl implements FindSum {
 
     private boolean findRec(int[] ints, int x, int index) {

@@ -28,6 +28,11 @@ public class FindSumApplication {
 		SpringApplication.run(FindSumApplication.class, args);
 	}
 
+	@Bean
+    FindSum findSum() {
+	    return new FindSumLsadImpl();
+    }
+
     @Bean
     CommandLineRunner runner(
             @Value("classpath:input.txt") Resource inputResource,
