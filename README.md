@@ -11,7 +11,7 @@ FindSum findSum() {
     return new FindSumYoursImpl();
 }
 ```
-The inputs for testing can be inserted on file src/main/resources/input.txt in below format:
-Int Array              Sum Number      Expected Result
-[1,2,3,4,5,27,31,55]      88                   true
+The inputs for testing can be inserted on file src/main/resources/input.txt in below format:  
+Int Array              Sum Number      Expected Result  
+[1,2,3,4,5,27,31,55]      88                   true  
 [57,5,1,2,8,13]           63                   true
