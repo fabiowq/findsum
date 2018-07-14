@@ -8,6 +8,6 @@ For example:
 ```java
 @Bean
 FindSum findSum() {
-    return new FindSumYourImpl();
+    return new FindSumYoursImpl();
 }
 ```
