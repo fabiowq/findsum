@@ -30,7 +30,7 @@ public class FindSumApplication {
 
 	@Bean
     FindSum findSum() {
-	    return new FindSumLsadImpl();
+	    return new FindSumFwqImpl();
     }
 
     @Bean

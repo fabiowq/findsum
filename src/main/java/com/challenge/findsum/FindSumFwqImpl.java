@@ -4,38 +4,33 @@ import java.util.Arrays;
 
 public class FindSumFwqImpl implements FindSum {
 
-    private boolean findRec(int[] ints, int x, int index) {
-        int sum = 0;
-        for (int i = 0; i < ints.length; i++) {
-            sum += ints[i];
+    private boolean findRec(int v, int index, int[] array, int x) {
+        int sum = v;
+        for (int j = index; j < array.length; j++) {
+            sum += array[j];
             if (sum == x) {
                 return true;
             }
-        }
-        index++;
-        if (index >= ints.length) {
-            return false;
-        }
-        int[] ints2 = Arrays.copyOf(ints, ints.length);
-        ints2[index] = 0;
-        return findRec(ints2, x, index);
-    }
-
-    public boolean find(int[] ints, int x) {
-        if (ints.length <= 1) {
-            return false;
-        }
-        Arrays.sort(ints);
-        for (int i = 0; i < ints.length; i++) {
-            for (int j = i; j < ints.length; j++) {
-                int[] ints2 = Arrays.copyOfRange(ints, i, ints.length);
-                if (j < ints2.length) {
-                    ints2[j] = 0;
-                }
-                boolean b = findRec(ints2, x, i);
-                if (b) {
+            if (sum > x) {
+                return false;
+            }
+            for (int k = j + 1; k < array.length; k++) {
+                if (findRec(sum, k, array, x)) {
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+
+    public boolean find(int[] array, int x) {
+        if (array.length <= 1) {
+            return false;
+        }
+        Arrays.sort(array);
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (findRec(array[i], j, array, x)) return true;
             }
         }
         return false;
