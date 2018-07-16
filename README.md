@@ -17,5 +17,5 @@ Int Array              Sum Number      Expected Result
 [57,5,1,2,8,13]           63                   true
 
 Running it:  
-`mvn spring-boot:run` or 
+`mvn spring-boot:run` or   
 `jar -jar java -jar target/findsum-0.0.1-SNAPSHOT.jar`
